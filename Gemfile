@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'bcrypt'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
@@ -8,6 +9,11 @@ gem 'rails', '4.2.0'
 gem 'sass-rails', '~> 5.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'uglifier', '>= 1.3.0'
+gem 'unicorn'
+
+group :development do
+  gem 'foreman'
+end
 
 group :development, :test do
   gem 'byebug'
@@ -20,5 +26,7 @@ end
 
 group :test do
   gem 'capybara'
+  gem 'factory_girl_rails'
+  gem 'shoulda-matchers', require: false
   gem 'webmock'
 end
