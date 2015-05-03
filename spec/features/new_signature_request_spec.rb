@@ -2,7 +2,10 @@ require 'rails_helper'
 
 feature 'New Signature Request' do
   let!(:admin) { create(:user, :admin) }
-  before(:each) { admin_login }
+  before(:each) do
+    allow(HelloSign).to receive(:send_signature_request).and_return(true)
+    admin_login
+  end
 
   scenario 'admin send request' do
     fill_in 'Name',         with: 'Random Name'

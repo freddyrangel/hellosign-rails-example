@@ -14,11 +14,6 @@ ActiveRecord::Migration.maintain_test_schema!
 WebMock.disable_net_connect!(allow_localhost: true)
 
 RSpec.configure do |config|
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
-  config.use_transactional_fixtures = true
-  config.infer_spec_type_from_file_location!
-  config.include FactoryGirl::Syntax::Methods
-
   # Cleaner backtrace for failure messages
   config.backtrace_exclusion_patterns = [
     /\/lib\d*\/ruby\//,
@@ -27,4 +22,10 @@ RSpec.configure do |config|
     /spec\/spec_helper\.rb/,
     /lib\/rspec\/(core|expectations|matchers|mocks)/
   ]
+
+  config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  config.use_transactional_fixtures = true
+  config.infer_spec_type_from_file_location!
+  config.include FactoryGirl::Syntax::Methods
+  config.include RequestHelpers
 end

@@ -16,6 +16,10 @@ RSpec.describe SignatureRequestsController, type: :controller do
   end
 
   describe '#create' do
+    before(:each) do
+      allow(HelloSign).to receive(:send_signature_request).and_return(true)
+    end
+
     context 'happy path' do
       let(:create_params) do
         {
@@ -27,7 +31,8 @@ RSpec.describe SignatureRequestsController, type: :controller do
         }
       end
 
-      before(:each) { post :create, create_params }
+      before(:each)  { post :create, create_params }
+
       it { expect(response).to redirect_to(signature_requests_path) }
       it { expect(SignatureRequest.count).to eq(1) }
     end
