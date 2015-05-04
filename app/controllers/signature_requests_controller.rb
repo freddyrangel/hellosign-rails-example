@@ -42,7 +42,8 @@ class SignatureRequestsController < ApplicationController
       },
       signers: [{
         email_address: @signature_request.email,
-        name: @signature_request.name
+        name: @signature_request.name,
+        pin: @signature_request.pin
       }],
       file_urls: [ENV['FILE_URL']]
   end

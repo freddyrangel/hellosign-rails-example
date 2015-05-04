@@ -43,6 +43,7 @@ RSpec.describe SignatureRequestsController, type: :controller do
 
       it { expect(response).to redirect_to(signature_requests_path) }
       it { expect(SignatureRequest.count).to eq(1) }
+      it { expect(SignatureRequest.last.pin).to_not be_nil }
     end
 
     context 'sad path' do
