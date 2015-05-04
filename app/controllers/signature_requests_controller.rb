@@ -50,6 +50,6 @@ class SignatureRequestsController < ApplicationController
 
   def text_signer
     TwilioMessages.send phone_number: @signature_request.phone_number,
-      body: "You have a new signature request send to this email: #{@signature_request.email}"
+      body: "You have a new signature request send to this email: #{@signature_request.email}. To sign the document, use this pin: #{@signature_request.pin}"
   end
 end
