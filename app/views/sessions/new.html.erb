@@ -1,7 +1,20 @@
-<%= form_tag sessions_path, method: :post do %>
-  <%= label_tag :email %>
-  <%= email_field_tag :email %>
-  <%= label_tag :password %>
-  <%= password_field_tag :password %>
-  <%= submit_tag 'Login' %>
-<% end %>
+<section id="login-form">
+  <div>
+    <p>Please Log In</p>
+  </div>
+  <%= form_tag sessions_path, method: :post do %>
+    <div>
+      <%= label_tag :email %>
+    </div>
+    <div>
+      <%= email_field_tag :email %>
+    </div>
+    <div>
+      <%= label_tag :password %>
+    </div>
+    <div>
+      <%= password_field_tag :password %>
+    </div>
+    <%= submit_tag 'Login', class: "btn btn-primary" %>
+  <% end %>
+</section>

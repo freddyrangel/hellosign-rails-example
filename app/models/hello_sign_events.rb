@@ -9,6 +9,7 @@ class HelloSignEvents
   def process
     if event_type == 'signature_request_signed'
       signature_request = SignatureRequest.find(server_signature_request_id)
+      signature_request.update_attribute(:signed, true)
       TwilioMessages.send phone_number: signature_request.phone_number,
         body: "Your document was received."
     end

@@ -1,0 +1,30 @@
+<div>
+  <h2>Signature Requests</h2>
+</div>
+
+<div class="row">
+  <table id="signature-requests-table" class="col col-md-8 col-md-offset-2">
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>Name</th>
+        <th>Phone Number</th>
+        <th>Signed?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @signature_requests.each do |signature_request| %>
+        <tr>
+          <td><%= signature_request.email %></td>
+          <td><%= signature_request.name %></td>
+          <td><%= signature_request.phone_number %></td>
+          <td><%= signature_request.signed? %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div id="new-signature-request-button">
+  <%= button_to 'New Signature Request', new_signature_request_path, method: :get, class: 'btn btn-primary' %>
+</div>

@@ -1,20 +1,35 @@
-<%= form_for @signature_request do |f| %>
+<section id="signature-request-form">
   <div>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+    <h2>New Signature Request</h2>
   </div>
+  <%= form_for @signature_request do |f| %>
+    <div>
+      <%= f.label :name %>
+    </div>
 
-  <div>
-    <%= f.label :email%>
-    <%= f.email_field :email %>
-  </div>
+    <div>
+      <%= f.text_field :name %>
+    </div>
 
-  <div>
-    <%= f.label :phone_number%>
-    <%= f.phone_field :phone_number %>
-  </div>
+    <div>
+      <%= f.label :email%>
+    </div>
 
-  <div>
-    <%= f.submit 'Send Signature Request' %>
-  </div>
-<% end %>
+    <div>
+      <%= f.email_field :email %>
+    </div>
+
+    <div>
+      <%= f.label :phone_number%>
+    </div>
+
+    <div>
+      <%= f.phone_field :phone_number %>
+    </div>
+
+
+    <div>
+      <%= f.submit 'Send Signature Request', class:"btn btn-primary" %>
+    </div>
+  <% end %>
+</section>

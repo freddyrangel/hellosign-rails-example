@@ -1,0 +1,62 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+  font-family: 'Helvetica';
+}
+
+header {
+  text-align: center;
+}
+
+#login-form {
+  font-size: 1.5em;
+  text-align: center;
+  form {
+    background-color: silver;
+    margin: 1em auto 1em auto;
+    padding-bottom: 1em;
+    width: 50%;
+
+    label {
+      margin: 1em auto 0 auto;
+    }
+
+    input {
+      margin: 1em auto 0 auto;
+    }
+  }
+}
+
+#signature-request-form {
+  font-size: 1.5em;
+  text-align: center;
+  form {
+    background-color: silver;
+    margin: 1em auto 1em auto;
+    padding-bottom: 1em;
+    width: 50%;
+
+    label {
+      margin: 1em auto 0 auto;
+    }
+
+    input {
+      margin: 1em auto 0 auto;
+    }
+  }
+}
+
+#signature-requests-table {
+  font-size: 1.5em;
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+}
+
+#new-signature-request-button {
+  margin-top: 2em;
+  text-align: center;
+}
