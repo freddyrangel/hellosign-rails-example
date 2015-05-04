@@ -16,8 +16,16 @@ RSpec.describe SignatureRequestsController, type: :controller do
   end
 
   describe '#create' do
+    let(:mock_twilio) { instance_double("Twilio::REST::Client") }
+    let(:mock_account) { double('account') }
+    let(:mock_messages) { double('messages') }
+
     before(:each) do
+      allow(mock_twilio).to receive(:account).and_return(mock_account)
+      allow(mock_account).to receive(:messages).and_return(mock_messages)
+      allow(mock_messages).to receive(:create).and_return(true)
       allow(HelloSign).to receive(:send_signature_request).and_return(true)
+      allow(Twilio::REST::Client).to receive(:new).and_return(mock_twilio)
     end
 
     context 'happy path' do

@@ -20,6 +20,7 @@ class SignatureRequestsController < ApplicationController
   end
 
   def callbacks
+    HelloSignEvents.new(params[:json]).process
     respond_to do |format|
       format.json { render json: 'Hello API Event Received', status: 200 }
     end
@@ -36,19 +37,18 @@ class SignatureRequestsController < ApplicationController
       title: 'Example Request',
       subject: 'Please Sign',
       message: 'This is an example signature request. Not legally binding.',
+      metadata: {
+        server_signature_request_id: @signature_request.id.to_s
+      },
       signers: [{
         email_address: @signature_request.email,
         name: @signature_request.name
       }],
-      files: ["#{Rails.root}/public/hellosign_test_template.pdf"]
+      file_urls: [ENV['FILE_URL']]
   end
 
   def text_signer
-    twilio = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
-    twilio.account.messages.create({
-      from: '+17024873281',
-      to: @signature_request.phone_number.gsub(/\D/, ''),
+    TwilioMessages.send phone_number: @signature_request.phone_number,
       body: "You have a new signature request send to this email: #{@signature_request.email}"
-    })
   end
 end
